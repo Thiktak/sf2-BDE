@@ -1,0 +1,23 @@
+{% extends "::layout.html.twig" %}
+
+{% block menu %}
+  {% render "BDEMemberBundle:Student:menu" %}
+{% endblock %}
+
+{% block body %}
+
+            <header>
+              <hgroup>
+                <h1>Nouveau étudiant</h1>
+              </hgroup>
+            </header>
+            <form action="{{ path('student_create') }}" method="post" class="form-horizontal" {{ form_enctype(form) }}>
+              <div class="main main-form">
+                {{ form_widget(form) }}
+              </div>
+              <div class="form-actions">
+                <a href="{{ path('student') }}" class="btn btn-danger">Annuler</a>
+                <button type="submit" class="btn btn-primary">Créer <i class="icon-chevron-right icon-white"></i></button>
+              </div>
+            </form>
+{% endblock %}

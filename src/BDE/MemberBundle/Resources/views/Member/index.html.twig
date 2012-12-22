@@ -1,0 +1,53 @@
+{% extends "::layout.html.twig" %}
+
+{% block menu %}
+  {% render "BDEMemberBundle:Student:menu" %}
+{% endblock %}
+
+{% block body %}
+
+            <header>
+              <hgroup>
+              <h1>Liste des cotisants ({{ entities|length }})</h1>
+              </hgroup>
+            </header>
+            <div class="main">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="text-center span1">Id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th class="span1">Classe</th>
+                    <th class="span2">Année</th>
+                    <th class="span1">€</th>
+                    <th class="text-center span1">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                  <tr>
+                    <td class="text-center">
+                      <a href="{{ path('member_show', { 'id': entity.id }) }}" class="muted small">b{{ entity.code }}</a>
+                    </td>
+                    <td>{{ entity.student.lname }}</td>
+                    <td>{{ entity.student.fname }}</td>
+                    <td>-</td>
+                    <td>{{ entity.year }} - {{ entity.year + entity.subscription }} - ({{ entity.subscription }})</td>
+                    <td>{{ entity.sum }}</td>
+                    <td>
+                      <ul class="actions">
+                        <li>
+                          <a href="{{ path('member_show', { 'id': entity.id }) }}"><i class="icon-eye-open"></i></a>
+                        </li>
+                        <li>
+                          <a href="{{ path('member_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+{% endblock %}

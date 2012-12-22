@@ -1,0 +1,57 @@
+{% extends "::layout.html.twig" %}
+
+{% block menu %}
+  {% render "BDEMemberBundle:Member:menu" %}
+{% endblock %}
+
+{% block body %}
+
+            <header>
+              <hgroup>
+              <h1>Membre (cotisant) : {{ entity.student }} ({{ entity.year }})</h1>
+              </hgroup>
+            </header>
+            <div class="main">
+
+              <figure class="pull-right img-polaroid">
+                <img src="http://www.racoindustries.com/barcodegenerator/1d/barcode-image.axd?S=Ean8&amp;AC=T&amp;BH=0.2&amp;BW=0.015&amp;C={{ entity.code }}&amp;DC=T&amp;EUS=None&amp;GB=T&amp;IFMT=Png&amp;QZ=0.25" />
+              </figure>
+
+              <dl class="dl-horizontal">
+                <dt>Id</dt>
+                <dd>{{ entity.id }} <span class="muted pull-right">#{{ entity.code }}</span></dd>
+                
+                <dt>Year</dt>
+                <dd>{{ entity.year }}</dd>
+
+
+                <dt>Subscription</dt>
+                <dd>{{ entity.subscription }}</dd>
+
+
+                <dt>Sum</dt>
+                <dd>{{ entity.sum }} €</dd>
+              </dl>
+
+              <ul class="actions">
+                  <li>
+                      <a href="{{ path('member') }}">
+                          Back to the list
+                      </a>
+                  </li>
+                  <li>
+                      <a href="{{ path('member_edit', { 'id': entity.id }) }}">
+                          Edit
+                      </a>
+                  </li><!--
+                  <li>
+                      <form action="{{ path('member_delete', { 'id': entity.id }) }}" method="post">
+                          {{ form_widget(delete_form) }}
+                          <button type="submit">Delete</button>
+                      </form>
+                  </li>-->
+              </ul>
+
+            </div>
+{% endblock %}
+

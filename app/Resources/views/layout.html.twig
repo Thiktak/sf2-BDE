@@ -5,8 +5,9 @@
       <nav id="menu">
         <ul>
           <li><a href="{{ path('_welcome') }}">&nbsp;<i class="icon-home icon-white"></i>&nbsp;</a></li>
-          <li><a href="#">&nbsp;<i class="icon-list icon-white"></i>&nbsp;</a></li>
-          <li><a href="#">&nbsp;<i class="icon-barcode icon-white"></i>&nbsp;</a></li>
+          <li><a href="{{ path('student') }}">&nbsp;<i class="icon-user icon-white"></i>&nbsp;</a></li>
+          <li><a href="{{ path('member') }}">&nbsp;<i class="icon-list icon-white"></i>&nbsp;</a></li>
+          <li><a href="{{ path('member') }}">&nbsp;<i class="icon-barcode icon-white"></i>&nbsp;</a></li>
           <li><a href="#" title="Config">&nbsp;<i class="icon-wrench icon-white"></i>&nbsp;</a></li>
         </ul>
       </nav>
@@ -15,23 +16,26 @@
         <header id="head">
           <form class="search-bar pull-right">
             <label class="input-append">
-              <input type="text" class="search" placeholder="">
+              <input id="search" type="text" class="search" placeholder="Ctrl + q">
               <span style="display: inline-block; padding: 2px; padding-left: 8px;"><i class="icon-search"></i></span>
             </label>
           </form>
+
+          <hgroup>
+            <h1>BDE {{ getSchoolYear() }}</h1>
+          </hgroup>
         </header>
 
         <div id="container-body">
+          {% set _menu = block('menu') %}
+          {% if not(_menu is empty) %}
           <nav id="left">
-            <ul>
-              <li><a href="#">List : </a></li>
-              <li><a href="#">Filter : année <span class="pull-right">2012</span></a></li>
-              <li><a href="#">Filter : cotisants <span class="pull-right">both</span></a></li>
-            </ul>
+            {{ _menu|raw }}
           </nav>
+          {% endif %}
 
           <section id="content">
-            {% block body %}{% endblock %}
+            {{ block('body') }}
           </section>
         </div>
       </div>
@@ -39,4 +43,37 @@
     <footer id="footer">
       &copy; Olivarès Georges
     </footer>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <style>
+    ul.actions { margin: 0; padding: 0; text-align: center; }
+    ul.actions li { margin: 0; padding: 0; list-style-type: none; display: inline-block; opacity: .25; }
+    ul.actions li:hover { opacity: 1; }
+
+    #left li a { padding-left: 25px; }
+    #left li a i { margin-left: -20px; margin-right: 3px; opacity: .15; }
+    #left li a:hover i { opacity: 1; }
+
+    .form-actions { text-align: right; }
+
+    #head > hgroup { margin: 0; padding: 2px; color: white; }
+    #head > hgroup * { margin: 0; padding: 0; padding-left: 1em; font-size: 1em; line-height: 25px; }
+
+    #head .search-bar input { padding: 1px 5px; }
+
+    .small { font-size: .75em; }
+  </style>
+{% endblock %}
+
+{% block javascripts %}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  {{ parent() }}
+  <script>
+    $(document).keypress('q',function(e) {
+      if( e.ctrlKey )
+        $('#search').focus();
+    });
+  </script>
 {% endblock %}

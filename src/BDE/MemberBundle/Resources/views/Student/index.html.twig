@@ -1,0 +1,66 @@
+{% extends "::layout.html.twig" %}
+
+{% block menu %}
+  {% render "BDEMemberBundle:Student:menu" %}
+{% endblock %}
+
+{% block body %}
+
+            <header>
+              <hgroup>
+              <h1>Liste des étudiants ({{ entities|length }})</h1>
+              </hgroup>
+            </header>
+            <div class="main">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="text-center span1">Id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th class="span1">Classe</th>
+                    <th class="span2">Cotisant</th>
+                    <!-- <th class="span2">Date created</th> -->
+                    <th class="text-center span1">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                  <tr>
+                    <td class="text-center">
+                      <a href="{{ path('student_show', { 'id': entity.id }) }}" class="muted">e{{ entity.id }}</a>
+                    </td>
+                    <td>{{ entity.lname }}</td>
+                    <td>{{ entity.fname }}</td>
+                    <td>-</td>
+                    <td>
+                      <div class="progress" style="margin: 5px; height: .90em; line-height: .90em;">
+                        {% set _max = max(4, entity.getNbMember()) %}
+                        {% for year, item in entity.getAllMember() %}
+                        <div class="bar {{ arrayIndex(item.is, {0: 'bar-warning', '2': 'bar-success'}) }}" style="width: {{ 100/_max }}%; font-size: .5em; ">
+                          {% if year == getSchoolYear() %}
+                            <strong style="color: darkred">{{ year }}</strong>
+                          {% else %}
+                            {{ year }}
+                          {% endif %}
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </td>
+                    <!-- <td>{% if entity.datecreated %}{{ entity.datecreated|printDate }}{% endif %}</td> -->
+                    <td>
+                      <ul class="actions">
+                        <li>
+                          <a href="{{ path('student_show', { 'id': entity.id }) }}"><i class="icon-eye-open"></i></a>
+                        </li>
+                        <li>
+                          <a href="{{ path('student_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+{% endblock %}

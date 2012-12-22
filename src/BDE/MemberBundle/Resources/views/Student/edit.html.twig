@@ -1,0 +1,30 @@
+{% extends "::layout.html.twig" %}
+
+{% block menu %}
+  {% render "BDEMemberBundle:Student:menu" %}
+{% endblock %}
+
+{% block body %}
+
+            <header>
+              <hgroup>
+                <h1>Edition étudiant : {{ entity }}</h1>
+              </hgroup>
+            </header>
+            <form action="{{ path('student_update', { 'id': entity.id }) }}" method="post" class="form-horizontal" {{ form_enctype(edit_form) }}>
+              <div class="main main-form">
+                {{ form_widget(edit_form) }}
+              </div>
+              <div class="form-actions">
+                <a href="{{ path('student') }}" class="btn btn-danger">Annuler</a>
+                <button type="submit" class="btn btn-primary">Editer <i class="icon-chevron-right icon-white"></i></button>
+              </div>
+            </form>
+{% endblock %}
+
+{# 
+        <form action="{{ path('student_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+#}
