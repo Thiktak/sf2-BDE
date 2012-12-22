@@ -2,12 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Site name{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('bundles/thiktakcore/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/thiktakcore/css/bootstrap-responsive.min.css') }}" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
+
+        <!-- Javascripts -->
+
+        <script src="{{ asset('bundles/thiktakcore/js/bootstrap.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
