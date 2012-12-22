@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Thiktak\CoreBundle\ThiktakCoreBundle(),
             new Thiktak\UserBundle\ThiktakUserBundle(),
+            new BDE\MemberBundle\BDEMemberBundle(),
+            new BDE\MainBundle\BDEMainBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

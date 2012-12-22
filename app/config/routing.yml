@@ -1,3 +1,13 @@
+bde_main:
+    resource: "@BDEMainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+bde_member:
+    resource: "@BDEMemberBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 thiktak_user:
     resource: "@ThiktakUserBundle/Controller/"
     type:     annotation

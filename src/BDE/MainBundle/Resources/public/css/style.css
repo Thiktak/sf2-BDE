@@ -1,0 +1,98 @@
+html {
+  height: 100%;
+  background-image: url('../img/background.jpg');
+  background-size: 100% 100%;
+  background-position: center center;
+} 
+
+#global {
+  position: absolute;
+  top: 5%; left: 10%; right: 10%; bottom: 5%;
+}
+
+#menu {
+  position: absolute;
+  top: 5%; left: -50px;
+}
+
+#head .search-bar {
+  padding: 4px;
+}
+
+#head .search-bar input {
+  border-radius: 0;
+  background: none;
+  background-color: black;
+  border: none;
+  padding: 0;
+}
+#head .search-bar label { line-height: 1em; }
+
+#menu ul { margin: 0; padding: 0; }
+#menu ul li { padding: 0; margin: 1px; list-style-type: none; width: 50px; height: 50px; background-color: black; }
+#menu li > a { padding: 5px; display: block; line-height: 40px; height: 40px; text-align: center; color: white; opacity: .75; }
+#menu li > a:hover { opacity: 1; text-decoration: none; }
+
+
+#left ul { margin: 0; padding: 0; font-size: .85em; }
+#left ul li { padding: 0; margin: 0; list-style-type: none; border-bottom: 1px solid rgba(255, 255, 255, .5); }
+#left li > a { padding: 5px 10px; display: block; color: #7d7d7d; }
+#left li > a span { font-size: .75em; }
+#left li > a:hover { background-color: #26639C; color: white; text-decoration: none; }
+#left li > a:active { background-color: #3979B6; }
+
+
+#container {
+  position: absolute;
+  top: 0%; left: 0; right: 0; bottom: 0;
+  padding: 4px;
+  background-image: url('../img/border.png');
+}
+
+#container-body { margin: 8px; position: absolute; left: 0; right: 0; top: 30px; bottom: 0; }
+#container-body > * {
+  background-color: white;
+}
+
+#container-body > * { position: absolute; display: inline-block; top: 0; bottom: 0; }
+#container-body > nav { width: 200px; background-color: #eaeaea; }
+#container-body > section { left: 0; right: 0; }
+#container-body > *:nth-child(2) { left: 210px; right: 0; }
+
+
+#content {
+}
+
+#footer {
+  position: absolute;
+  bottom: 5px; left: 0; right: 0;
+  opacity: .5;
+  color: gray;
+  text-align: center;
+  font-size: .75em;
+}
+
+section > header { z-index: 200; position: absolute; top: 0; left: 0; right: 0; padding: 0; margin: 0; box-shadow: 0 0 10px -4px #aeaeae; min-height: 25px; display: block; }
+section > header hgroup { padding: 2px; padding-left: 8px; color: lightgray; }
+section > header hgroup * { margin: 0; padding: 0; font-size: 1em; line-height: 25px; }
+section .main { position: absolute; left: 0; bottom: 0; right: 0; top: 30px; padding: 4px 8px; overflow-y: scroll; z-index: 100; }
+
+section .main-form { margin-bottom: 70px; padding-top: 20px; }
+
+section ul.body { margin: 0; padding: 0; }
+section ul.body li { margin: 8px 0; padding: 5px; list-style-type: none; }
+section ul.body li:nth-child(odd) { background-color: #ECECEA; }
+section ul.body li:nth-child(even) { background-color: #F3FAB6; }
+
+section table { width: 100%; }
+section table thead th { text-transform: uppercase; font-size: .75em; text-align: left; color: lightgray; }
+section table tbody tr { border-bottom: 4px solid white; }
+section table tbody tr:nth-child(odd) { background-color: #ECECEA; }
+section table tbody tr:nth-child(even) { background-color: #F3FAB6; }
+
+.form-actions { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; }
+
+
+/* GENERAL CSS */
+
+.text-center { text-align: center; }

@@ -1,1 +1,42 @@
 {% extends "::base.html.twig" %}
+{% block base_body %}
+    <div id="global">
+
+      <nav id="menu">
+        <ul>
+          <li><a href="{{ path('_welcome') }}">&nbsp;<i class="icon-home icon-white"></i>&nbsp;</a></li>
+          <li><a href="#">&nbsp;<i class="icon-list icon-white"></i>&nbsp;</a></li>
+          <li><a href="#">&nbsp;<i class="icon-barcode icon-white"></i>&nbsp;</a></li>
+          <li><a href="#" title="Config">&nbsp;<i class="icon-wrench icon-white"></i>&nbsp;</a></li>
+        </ul>
+      </nav>
+
+      <div id="container">
+        <header id="head">
+          <form class="search-bar pull-right">
+            <label class="input-append">
+              <input type="text" class="search" placeholder="">
+              <span style="display: inline-block; padding: 2px; padding-left: 8px;"><i class="icon-search"></i></span>
+            </label>
+          </form>
+        </header>
+
+        <div id="container-body">
+          <nav id="left">
+            <ul>
+              <li><a href="#">List : </a></li>
+              <li><a href="#">Filter : année <span class="pull-right">2012</span></a></li>
+              <li><a href="#">Filter : cotisants <span class="pull-right">both</span></a></li>
+            </ul>
+          </nav>
+
+          <section id="content">
+            {% block body %}{% endblock %}
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+      &copy; Olivarès Georges
+    </footer>
+{% endblock %}

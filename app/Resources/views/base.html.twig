@@ -3,13 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Site name{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('bundles/thiktakcore/css/bootstrap.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/thiktakcore/css/bootstrap-responsive.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/bdemain/css/style.css') }}" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block base_body %}{% endblock %}
 
         <!-- Javascripts -->
 
