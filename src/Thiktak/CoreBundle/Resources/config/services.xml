@@ -4,6 +4,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+
+    <services>
+        <service id="thiktak.core.form" class="Thiktak\CoreBundle\Services\FormService">
+            <argument type="service" id="request" strict="false" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
+        <service id="thiktak.twig.core" class="Thiktak\CoreBundle\Twig\CoreExtension">
+            <tag name="twig.extension" />
+            <argument type="service" id="translator" />
+        </service>
+    </services>
+
     <!--
     <parameters>
         <parameter key="thiktak_core.example.class">Thiktak\CoreBundle\Example</parameter>
