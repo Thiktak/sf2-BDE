@@ -1,12 +1,12 @@
-{% extends "ThiktakUserBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 
-{% block body %}
+{% block base_body %}
 
 <div class="modal" tabindex="-1">
   <div class="modal-header">
 	  <div class="content"><h3>Login</h3></div>
   </div>
-	<form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin center">
+	<form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin text-center">
  		 <div class="modal-body">
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 

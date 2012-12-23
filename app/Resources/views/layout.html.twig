@@ -14,15 +14,15 @@
 
       <div id="container">
         <header id="head">
-          <form class="search-bar pull-right">
+          <form action="{{ path('search') }}" method="GET" class="search-bar pull-right">
             <label class="input-append">
-              <input id="search" type="text" class="search" placeholder="Ctrl + q">
+              <input id="search" name="query" type="text" class="search" placeholder="Ctrl + q">
               <span style="display: inline-block; padding: 2px; padding-left: 8px;"><i class="icon-search"></i></span>
             </label>
           </form>
 
           <hgroup>
-            <h1>BDE {{ getSchoolYear() }}</h1>
+            <h1>BDE {{ getSchoolYear() }} <span class="muted">({{ app.user.username }})</span></h1>
           </hgroup>
         </header>
 
@@ -35,6 +35,16 @@
           {% endif %}
 
           <section id="content">
+            {% set msg = app.session.getFlashes() %}
+            {% if msg|length > 0 %}
+            <div class="flash-msg">
+            {% for key, flash in msg %}
+              <div class="alert alert-{{ key }}">{{ flash }}</div>
+            {% endfor %}
+              <div class="clearfix"></div>
+            </div>
+            {% endif %}
+
             {{ block('body') }}
           </section>
         </div>
@@ -64,6 +74,8 @@
     #head .search-bar input { padding: 1px 5px; }
 
     .small { font-size: .75em; }
+
+    .flash-msg { margin: 3em; }
   </style>
 {% endblock %}
 

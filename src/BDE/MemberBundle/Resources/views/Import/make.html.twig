@@ -1,0 +1,57 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+            <header>
+              <hgroup>
+                <h1>Importation de données</h1>
+              </hgroup>
+            </header>
+            <div class="main">
+              <br />
+              <form action="#" method="post">
+                <div class="container-fluid">
+                  <div class="row-fluid">
+                    <div class="span6">
+                      <label class="checkbox">
+                        <input type="checkbox" name="first" value="1">
+                        1ere ligne comme entête
+                      </label>
+                    </div>
+                    <div class="span6">
+                      <label class="radio">
+                        <input type="radio" name="type" value="student" checked />
+                        Liste d'étudiants
+                      </label>
+                      <label class="radio">
+                        <input type="radio" name="type" value="member" />
+                        Liste de cotisants
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <div class="container-fluid">
+                <div class="row-fluid">
+                  <div class="span6" style="border: 1px solid black">
+                    <div style="overflow: scroll; width: 100%; height: 300px">
+                      <table>
+                        <thead>
+                          <tr>
+                            {% for item in th %}
+                            <th>{{ item }}</th>
+                            {% endfor %}
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="span6 well">
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+{% endblock %}

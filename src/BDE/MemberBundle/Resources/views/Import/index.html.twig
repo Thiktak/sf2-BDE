@@ -1,0 +1,16 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+            <header>
+              <hgroup>
+                <h1>Importation de données</h1>
+              </hgroup>
+            </header>
+            <div class="main">
+              <form action="{{ path('import') }}" method="post" {{ form_enctype(form) }}>
+                  {{ form_widget(form) }}
+                  <input type="submit" />
+              </form>
+            </div>
+{% endblock %}

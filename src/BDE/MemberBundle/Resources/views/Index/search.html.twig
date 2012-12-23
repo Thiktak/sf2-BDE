@@ -1,0 +1,37 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+            <header>
+              <hgroup>
+                <h1>Recherche &quot;{{ query }}&quot;</h1>
+              </hgroup>
+            </header>
+            <div class="main">
+              {% if code %}
+              <figure class="pull-right img-polaroid">
+                <img src="http://www.racoindustries.com/barcodegenerator/1d/barcode-image.axd?S=Ean8&amp;AC=None&amp;BH=0.1&amp;BW=0.015&amp;C={{ codeb }}&amp;DC=T&anmp;EUS=None&amp;IFMT=Png&amp;QZ=0.25" />
+              </figure>
+              {% endif %}
+
+              <div class="clearfix"></div>
+
+              <div class="container-fluid">
+                <div class="row-fluid">
+              {% for type, entities2 in entities %}
+                  <div class="span6">
+                    <h1 class="nav-header">{{ type }}</h1>
+                    <ul class="body">
+                {% for entity in entities2 %}
+                      <li>{{ entity }}</li>
+                {% else %}
+                      <li class="alert alert-error">Aucun résultat ...</li>
+                {% endfor %}
+                    </ul>
+                  </div>
+              {% endfor %}
+                </div>
+              </div>
+              
+            </div>
+{% endblock %}
