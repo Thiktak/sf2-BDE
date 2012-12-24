@@ -1,0 +1,6 @@
+
+            <ul>
+              {% for item in files %}
+              <li><a href="{{ path('print', {file: item}) }}"><i class="icon-chevron-right"></i> {{ item }}</a></li>
+              {% endfor %}
+            </ul>

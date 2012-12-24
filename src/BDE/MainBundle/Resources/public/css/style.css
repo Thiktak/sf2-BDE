@@ -87,8 +87,38 @@ section ul.body li:nth-child(even) { background-color: #F3FAB6; }
 section table { width: 100%; }
 section table thead th { text-transform: uppercase; font-size: .75em; text-align: left; color: lightgray; }
 section table tbody tr { border-bottom: 4px solid white; }
+section article table tbody tr { border-bottom: 4px solid transparent; }
 section table tbody tr:nth-child(odd) { background-color: #ECECEA; }
 section table tbody tr:nth-child(even) { background-color: #F3FAB6; }
+
+
+    ul.actions { margin: 0; padding: 0; text-align: center; }
+    ul.actions li { margin: 0; padding: 0; list-style-type: none; display: inline-block; opacity: .25; }
+    ul.actions li:hover { opacity: 1; }
+
+    #left li a { padding-left: 25px; }
+    #left li a i { margin-left: -20px; margin-right: 3px; opacity: .15; }
+    #left li a:hover i { opacity: 1; }
+    section > header aside { position: absolute; right: 0; top: 0; }
+    section > header aside ul { margin: 0; padding: 0; }
+    section > header aside li { margin: 0; padding: 0; list-style-type: none; display: inline-block; }
+    section > header aside a { padding: 0 8px; display: block; line-height: 30px; opacity: .5; }
+    section > header aside a:hover { opacity: 1; }
+
+    .form-actions { text-align: right; }
+
+    #head > hgroup { margin: 0; padding: 2px; color: white; }
+    #head > hgroup * { margin: 0; padding: 0; padding-left: 1em; font-size: 1em; line-height: 25px; }
+
+    #head .search-bar input { padding: 1px 5px; }
+
+    .small { font-size: .75em; }
+
+    .flash-msg { margin: 3em; }
+
+    section article { background-color: #eaeaea; padding: 1em; }
+    section article > header * { margin: 0; padding: 0; font-size: 1em; line-height: 1em; }
+    section article > header { padding: 2px 0; border-bottom: 1px solid white; margin-bottom: .5em; }
 
 .form-actions { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; }
 

@@ -3,5 +3,24 @@
               <li><a href="{{ path('member') }}"><i class="icon-list"></i> Liste des cotisants</a></li>
               <li><a href="{{ path('member_new') }}"><i class="icon-plus"></i> Ajouter un cotisant</a></li>
               <li><a href="#"><i class="icon-upload"></i> Importer</a></li>
-              <li><a href="#"><i class="icon-filter"></i> Année <span class="pull-right">2012</span></a></li>
+              
+              {% for type, item in filters %}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-filter"></i> {{ ('filter.' ~ type)|trans }}
+                  <span class="pull-right">{{ item.values|join(', ') }} <b class="caret"></b></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                  {% for iType, iValues in item.choices %}
+                    {% for key, val in iValues %}
+                  <li>
+                    <a href="{{ path('filter_apply', {'type': iType, key: type, value: key}) }}">
+                      {{ val }}
+                    </a>
+                  </li>
+                    {% endfor %}
+                  {% endfor %}
+                </ul>
+              </li>
+              {% endfor %}
             </ul>

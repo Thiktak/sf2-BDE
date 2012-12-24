@@ -60,9 +60,19 @@ class Member
         return $this->id;
     }
 
-    public function getCode()
+    public function getCode($withKey = false)
     {
-        return sprintf('%01d%06d', $this->getSubscription(), $this->getId());
+        return sprintf('%01d%06d', $this->getSubscription(), $this->getId()) . ($withKey ? $this->getKeyCode() : null);
+    }
+
+    public function getKeyCode() {
+        $code = $this->getCode();
+        $key = 0;
+        for( $i = 0 ; $i < strlen($code) ; $i++ )
+        {
+            $key += $code[$i] * ($i%2 == 0 ? 3 : 1);
+        }
+        return 10 - $key%10;
     }
 
     /**

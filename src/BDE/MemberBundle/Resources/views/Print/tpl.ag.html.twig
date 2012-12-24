@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style media="print">
+      @page 
+      {
+        size: auto;   /* auto is the initial value */
+        margin: 0mm;  /* this affects the margin in the printer settings */
+      }
+    </style>
+    <style>
+      body { text-align: center; }
+      figure { margin: 0; width: 18%; padding: 1%; text-align: center; border: 1px dotted black; display: inline-block; }
+    </style>
+  </head>
+  <body>
+    <table border="1" style="width: 100%;">
+    {% for entity in entities %}
+      <tr>
+        <td>{{ entity.student.lname }}</td>
+        <td>{{ entity.student.fname }}</td>
+        <td>{{ entity.year }} - {{ entity.year + entity.subscription }}</td>
+        <td style="width: 3cm;"></td>
+      </tr>
+    {% endfor %}
+    </table>
+  </body>
+</html>

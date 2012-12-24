@@ -1,0 +1,17 @@
+{% extends "::layout.html.twig" %}
+
+{% block menu %}
+  {% render "BDEMemberBundle:Print:menu" %}
+{% endblock %}
+
+{% block body %}
+
+            <header>
+              <hgroup>
+              <h1>Impression - choisissez un modèle</h1>
+              </hgroup>
+            </header>
+            <div class="main">
+              <iframe src="{{ path('print_show', {file: file}) }}" style="height: calc(100% - 10px); width: 100%; border: 1px solid black"></iframe>
+            </div>
+{% endblock %}

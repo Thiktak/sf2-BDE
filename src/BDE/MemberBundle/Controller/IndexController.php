@@ -28,12 +28,14 @@ class IndexController extends Controller
         if( ($q = $request->query->get('query')) )
           return $this->redirect($this->generateUrl('search_query', array('query' => $q)));
 
+        $query = preg_replace('` {1,}`', ' ', trim($query));
+
         $code = null;
         $em = $this->getDoctrine()->getManager();
         $entities = array('member' => array(), 'student' => array());
 
-          if( preg_match('`(e|b|\#|)([0-9]+){7,8}`', $query) ) {
-            $code = intval($query);
+          if( preg_match('`(e|b|\#|)([0-9]{7,8})`', $query, $m) && $m[2] ) {
+            $code = $m[2];
 
             $result = $em->getRepository('BDEMemberBundle:Member')->findOneById(intval(substr($code, 1, 7)));
             if( count($result) == 1 )

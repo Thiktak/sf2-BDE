@@ -21,7 +21,25 @@ class MemberController extends Controller
      * @Template()
      */
     public function menuAction() {
-        return array();
+        $Y = $this->get('bde.twig.main')->getSchoolYear();
+
+        $filters = array();
+
+        $filters['class']['values'] = $this->get('session')->get('filter.class', 'all');
+        $filters['class']['choices']['set']['*']    = 'Toutes les classes';
+        $filters['class']['choices']['add']['AS']   = 'AS';
+        $filters['class']['choices']['add']['IR']   = 'IR';
+        $filters['class']['choices']['add']['FIP']  = 'FIP';
+        $filters['class']['choices']['add']['ME']   = 'ME';
+        $filters['class']['choices']['add']['TF']   = 'TF';
+
+
+        $filters['years']['values'] = $this->get('session')->get('filter.years', $Y);
+        $filters['years']['choices']['set']['*'] = 'Toutes les années';
+        foreach( range($Y, 2009) as $year )
+            $filters['years']['choices']['set'][$year]  = $year;
+
+        return compact('filters');
     }
 
 
@@ -35,7 +53,11 @@ class MemberController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('BDEMemberBundle:Member')->findAll();
+        $entities = $em->getRepository('BDEMemberBundle:Member')->createQueryBuilder('m')
+                       ->where(':year BETWEEN m.year AND m.year + m.subscription')
+                       ->setParameter('year', $this->get('session')->get('filter.years', $this->get('bde.twig.main')->getSchoolYear()))
+                       ->getQuery()
+                       ->getResult();
 
         return array(
             'entities' => $entities,
